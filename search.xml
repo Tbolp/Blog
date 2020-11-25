@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android编译lua-5.4.1]]></title>
+    <url>%2F2020%2F11%2F25%2FAndroid%E7%BC%96%E8%AF%91lua-5-4-1%2F</url>
+    <content type="text"><![CDATA[Android编译lua-5.4.1 我的目标是编译一个在android上的一个lua解释器 环境NDK版本为21.1.6352462 CMake版本为3.15.0 lua源码为5.4.1 ninja版本1.8.2 过程我打算直接使用CMake命令生成ninja的工程文件,然后使用ninja命令进行编译,由于lua源码是使用Makefile,需要添加一个CMakeLists.txt文件 1 CMakeLists.txt1234567891011121314151617181920212223242526272829303132333435363738394041424344# NDK版本需要大于21否则缺少函数set(ANDROID_NATIVE_API_LEVEL 21)# 使用NDK的toolchain进行编译include(C:/Users/Tbolp/AppData/Local/Android/Sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake)cmake_minimum_required(VERSION 3.12)project(lua-5.4.1)add_executable(lua-5.4.1 src/lapi.c src/lcode.c src/lctype.c src/ldebug.c src/ldo.c src/ldump.c src/lfunc.c src/lgc.c src/llex.c src/lmem.c src/lobject.c src/lopcodes.c src/lparser.c src/lstate.c src/lstring.c src/ltable.c src/ltm.c src/lundump.c src/lvm.c src/lzio.c src/lauxlib.c src/lbaselib.c src/lcorolib.c src/ldblib.c src/liolib.c src/lmathlib.c src/loadlib.c src/loslib.c src/lstrlib.c src/ltablib.c src/lutf8lib.c src/linit.c src/lua.c) 2 编译生成build.ninja1cmake . -G Ninja 编译文件1ninja 成功后会生成一个lua-5.4.1的文件 3 运行需注意普通目录没有运行权限,需要将文件放入/data/local/tmp目录运行1234567891011adb devices -ladb push lua-5.4.1 /data/local/tmpadb shellcd /data/local/tmpchmod u+x lua-5.4.1./lua-5.4.1 最后可以看到进入了lua交互中 文档https://cmake.org/cmake/help/v3.19/manual/cmake-toolchains.7.html#cross-compiling-for-android https://cmake.org/cmake/help/v3.19/manual/cmake-commands.7.html https://bbs.pediy.com/thread-213564.htm]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[调整ubutun在hyperv下分辨率]]></title>
+    <url>%2F2020%2F09%2F25%2F%E8%B0%83%E6%95%B4ubutun%E5%9C%A8hyperv%E4%B8%8B%E5%88%86%E8%BE%A8%E7%8E%87%2F</url>
+    <content type="text"><![CDATA[调整ubutun在hyperv下分辨率 使用默认编辑器编辑启动文件,在GRUB_CMDLINE_LINUX_DEFAULT后面添加video=hyperv_fb:800x60012sudo nano /etc/default/grubGRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash video=hyperv_fb:1920x1080&quot; 更新grub,重启12sudo update-grubsudo reboot]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[均匀开B样条]]></title>
     <url>%2F2020%2F08%2F11%2F%E5%9D%87%E5%8C%80%E5%BC%80B%E6%A0%B7%E6%9D%A1%2F</url>
     <content type="text"><![CDATA[均匀开B样条 1 原理定义红色函数为$f_{1}$,蓝色函数为$f_{2}$如果现在我们取$R^{n}$中的两个点$P_{1},P_{2}$,定义$f(x)=f_{1}\cdot P_{1}+ f_{2}\cdot P_{2}$,这样我们就得到了一条曲线，并且由于$f_{1},f_{2}$是连续的所以曲线也是连续的 如果我们有n个点,那我们就可以选取n个函数，通过计算得到一条曲线$f(x)=\sum f_{i}\cdot P_{i}$,$f(x)$的光滑程度与$f_{i}$有关 每个点对应一个函数，这一系列函数称为基函数 2 基函数定义$$ f_{n,n+1}(x)=\begin{cases}1 &amp; n \le x &lt; n+1 \\0 &amp; other\end{cases}$$当$k&gt;1$递归定义$$f_{n,n+k} = \frac{x-n}{k-1}f_{n,n+k-1}+\frac{n+k-x}{k-1}f_{n+1,n+k}$$其中$f_{n,n+k}$是$C^{k-2}$的，并且有$$\sum_{i}^{i+k} f_{i,i+k} = 1\quad i+k-1\le x&lt;i+k$$ 3 均匀开B样条设有n个点为$P_{1}\dots P_{n}$，需要次数为p的一个开B样条曲线，由以上条件我们选择$f_{1,1+p+1}\dots f_{n,n+p+1}$作为基函数，于是 $$ f(x)=\sum_{i=1}^{n} f_{i,i+p+1}(x)\cdot P_{i} $$ 因为B样条曲线自变量$x$取值范围需要满足 $$\sum_{i=1}^{n} f_{i,i+p+1}(x)=1$$ 所以取值范围为$p+1 \le x &lt; n+1$,而为了使曲线存在需满足$p &lt; n$ 4 示例https://www.tbolp.club/Examples/#/bspline]]></content>

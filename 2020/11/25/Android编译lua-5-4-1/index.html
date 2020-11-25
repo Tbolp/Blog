@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="git Submodule使用">
+<meta name="description" content="Android编译lua-5.4.1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git Submodule">
-<meta property="og:url" content="http://Tbolp.github.io/2020/02/19/git Submodule/index.html">
+<meta property="og:title" content="Android编译lua-5.4.1">
+<meta property="og:url" content="http://Tbolp.github.io/2020/11/25/Android编译lua-5-4-1/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="git Submodule使用">
+<meta property="og:description" content="Android编译lua-5.4.1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-11T09:39:02.402Z">
+<meta property="og:updated_time" content="2020-11-25T16:17:20.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git Submodule">
-<meta name="twitter:description" content="git Submodule使用">
+<meta name="twitter:title" content="Android编译lua-5.4.1">
+<meta name="twitter:description" content="Android编译lua-5.4.1">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://Tbolp.github.io/2020/02/19/git Submodule/">
+  <link rel="canonical" href="http://Tbolp.github.io/2020/11/25/Android编译lua-5-4-1/">
 
 
 
 
 
-  <title>git Submodule | </title>
+  <title>Android编译lua-5.4.1 | </title>
   
 
 
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Tbolp.github.io/2020/02/19/git Submodule/">
+    <link itemprop="mainEntityOfPage" href="http://Tbolp.github.io/2020/11/25/Android编译lua-5-4-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tbolp">
@@ -291,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git Submodule</h1>
+          <h1 class="post-title" itemprop="name headline">Android编译lua-5.4.1</h1>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-19T22:11:44+08:00">
-                2020-02-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-25T23:36:32+08:00">
+                2020-11-25
               </time>
             
 
@@ -313,28 +313,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -363,13 +341,23 @@
       
 
       
-        <h1 id="git-Submodule使用"><a href="#git-Submodule使用" class="headerlink" title="git Submodule使用"></a>git Submodule使用</h1><a id="more"></a>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>将现有git管理项目的一个子项目单独移除作为新的仓库管理，假如该子目录为dist</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="1-从git主项目移除dist目录"><a href="#1-从git主项目移除dist目录" class="headerlink" title="1.从git主项目移除dist目录"></a>1.从git主项目移除dist目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached dist</span><br></pre></td></tr></table></figure>
-<h3 id="2-将dist目录初始化为新的git仓库"><a href="#2-将dist目录初始化为新的git仓库" class="headerlink" title="2.将dist目录初始化为新的git仓库"></a>2.将dist目录初始化为新的git仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd dist</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
-<h3 id="3-git主项目使用git-submodule添加子项目"><a href="#3-git主项目使用git-submodule添加子项目" class="headerlink" title="3.git主项目使用git submodule添加子项目"></a>3.git主项目使用git submodule添加子项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add ./dist</span><br></pre></td></tr></table></figure>
-<h2 id="git-submodule用法"><a href="#git-submodule用法" class="headerlink" title="git submodule用法"></a>git submodule用法</h2><h3 id="1-从外部项目获取git-submodule"><a href="#1-从外部项目获取git-submodule" class="headerlink" title="1.从外部项目获取git submodule"></a>1.从外部项目获取git submodule</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add &lt;repository&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="2-克隆完整项目"><a href="#2-克隆完整项目" class="headerlink" title="2.克隆完整项目"></a>2.克隆完整项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;repository&gt; --recursive</span><br><span class="line">git submodule foreach git pull</span><br></pre></td></tr></table></figure>
+        <h1 id="Android编译lua-5-4-1"><a href="#Android编译lua-5-4-1" class="headerlink" title="Android编译lua-5.4.1"></a>Android编译lua-5.4.1</h1><a id="more"></a>
+<p>我的目标是编译一个在android上的一个lua解释器</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>NDK版本为21.1.6352462</p>
+<p>CMake版本为3.15.0</p>
+<p>lua源码为5.4.1</p>
+<p>ninja版本1.8.2</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>我打算直接使用CMake命令生成ninja的工程文件,然后使用ninja命令进行编译,由于lua源码是使用Makefile,需要添加一个CMakeLists.txt文件</p>
+<h3 id="1-CMakeLists-txt"><a href="#1-CMakeLists-txt" class="headerlink" title="1 CMakeLists.txt"></a>1 CMakeLists.txt</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># NDK版本需要大于21否则缺少函数</span><br><span class="line">set(ANDROID_NATIVE_API_LEVEL 21)</span><br><span class="line"># 使用NDK的toolchain进行编译</span><br><span class="line">include(C:/Users/Tbolp/AppData/Local/Android/Sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cmake_minimum_required(VERSION 3.12)</span><br><span class="line"></span><br><span class="line">project(lua-5.4.1)</span><br><span class="line"></span><br><span class="line">add_executable(lua-5.4.1 </span><br><span class="line">src/lapi.c </span><br><span class="line">src/lcode.c </span><br><span class="line">src/lctype.c </span><br><span class="line">src/ldebug.c </span><br><span class="line">src/ldo.c </span><br><span class="line">src/ldump.c </span><br><span class="line">src/lfunc.c </span><br><span class="line">src/lgc.c </span><br><span class="line">src/llex.c </span><br><span class="line">src/lmem.c </span><br><span class="line">src/lobject.c </span><br><span class="line">src/lopcodes.c </span><br><span class="line">src/lparser.c </span><br><span class="line">src/lstate.c </span><br><span class="line">src/lstring.c </span><br><span class="line">src/ltable.c </span><br><span class="line">src/ltm.c </span><br><span class="line">src/lundump.c </span><br><span class="line">src/lvm.c </span><br><span class="line">src/lzio.c </span><br><span class="line">src/lauxlib.c </span><br><span class="line">src/lbaselib.c </span><br><span class="line">src/lcorolib.c </span><br><span class="line">src/ldblib.c </span><br><span class="line">src/liolib.c </span><br><span class="line">src/lmathlib.c </span><br><span class="line">src/loadlib.c </span><br><span class="line">src/loslib.c </span><br><span class="line">src/lstrlib.c </span><br><span class="line">src/ltablib.c </span><br><span class="line">src/lutf8lib.c </span><br><span class="line">src/linit.c </span><br><span class="line">src/lua.c)</span><br></pre></td></tr></table></figure>
+<h3 id="2-编译"><a href="#2-编译" class="headerlink" title="2 编译"></a>2 编译</h3><p>生成build.ninja<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake . -G Ninja</span><br></pre></td></tr></table></figure></p>
+<p>编译文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ninja</span><br></pre></td></tr></table></figure></p>
+<p>成功后会生成一个lua-5.4.1的文件</p>
+<h3 id="3-运行"><a href="#3-运行" class="headerlink" title="3 运行"></a>3 运行</h3><p>需注意普通目录没有运行权限,需要将文件放入/data/local/tmp目录运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">adb devices -l</span><br><span class="line"></span><br><span class="line">adb push lua-5.4.1 /data/local/tmp</span><br><span class="line"></span><br><span class="line">adb shell</span><br><span class="line"></span><br><span class="line">cd /data/local/tmp</span><br><span class="line"></span><br><span class="line">chmod u+x lua-5.4.1</span><br><span class="line"></span><br><span class="line">./lua-5.4.1</span><br></pre></td></tr></table></figure></p>
+<p>最后可以看到进入了lua交互中</p>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><p><a href="https://cmake.org/cmake/help/v3.19/manual/cmake-toolchains.7.html#cross-compiling-for-android" target="_blank" rel="noopener">https://cmake.org/cmake/help/v3.19/manual/cmake-toolchains.7.html#cross-compiling-for-android</a></p>
+<p><a href="https://cmake.org/cmake/help/v3.19/manual/cmake-commands.7.html" target="_blank" rel="noopener">https://cmake.org/cmake/help/v3.19/manual/cmake-commands.7.html</a></p>
+<p><a href="https://bbs.pediy.com/thread-213564.htm" target="_blank" rel="noopener">https://bbs.pediy.com/thread-213564.htm</a></p>
+
       
     </div>
     
@@ -393,8 +381,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/12/树莓派蓝牙音箱/" rel="next" title="树莓派蓝牙音箱">
-                <i class="fa fa-chevron-left"></i> 树莓派蓝牙音箱
+              <a href="/2020/09/25/调整ubutun在hyperv下分辨率/" rel="next" title="调整ubutun在hyperv下分辨率">
+                <i class="fa fa-chevron-left"></i> 调整ubutun在hyperv下分辨率
               </a>
             
           </div>
@@ -402,10 +390,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/15/webassembly例子/" rel="prev" title="webassembly例子">
-                webassembly例子 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -544,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#git-Submodule使用"><span class="nav-number">1.</span> <span class="nav-text">git Submodule使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">1.2.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-从git主项目移除dist目录"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.从git主项目移除dist目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-将dist目录初始化为新的git仓库"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.将dist目录初始化为新的git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-git主项目使用git-submodule添加子项目"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.git主项目使用git submodule添加子项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-submodule用法"><span class="nav-number">1.3.</span> <span class="nav-text">git submodule用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-从外部项目获取git-submodule"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.从外部项目获取git submodule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-克隆完整项目"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.克隆完整项目</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android编译lua-5-4-1"><span class="nav-number">1.</span> <span class="nav-text">Android编译lua-5.4.1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">1.2.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-CMakeLists-txt"><span class="nav-number">1.2.1.</span> <span class="nav-text">1 CMakeLists.txt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.2.</span> <span class="nav-text">2 编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-运行"><span class="nav-number">1.2.3.</span> <span class="nav-text">3 运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档"><span class="nav-number">1.2.4.</span> <span class="nav-text">文档</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
