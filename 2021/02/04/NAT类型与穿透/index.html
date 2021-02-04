@@ -20,21 +20,19 @@
     var CONFIG = {"hostname":"tbolp.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="均匀开B样条">
+  <meta name="description" content="NAT类型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="均匀开B样条">
-<meta property="og:url" content="http://Tbolp.github.io/2020/08/11/均匀开B样条/index.html">
+<meta property="og:title" content="NAT类型与穿透">
+<meta property="og:url" content="http://Tbolp.github.io/2021/02/04/NAT类型与穿透/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="均匀开B样条">
+<meta property="og:description" content="NAT类型">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://tbolp.github.io/2020/08/11/均匀开B样条/1.svg">
-<meta property="og:updated_time" content="2021-01-02T02:14:41.108Z">
+<meta property="og:updated_time" content="2021-02-04T04:49:26.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="均匀开B样条">
-<meta name="twitter:description" content="均匀开B样条">
-<meta name="twitter:image" content="http://tbolp.github.io/2020/08/11/均匀开B样条/1.svg">
+<meta name="twitter:title" content="NAT类型与穿透">
+<meta name="twitter:description" content="NAT类型">
 
-<link rel="canonical" href="http://Tbolp.github.io/2020/08/11/均匀开B样条/">
+<link rel="canonical" href="http://Tbolp.github.io/2021/02/04/NAT类型与穿透/">
 
 
 <script id="page-configurations">
@@ -47,7 +45,7 @@
   };
 </script>
 
-  <title>均匀开B样条 | </title>
+  <title>NAT类型与穿透 | </title>
   
 
 
@@ -182,7 +180,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://Tbolp.github.io/2020/08/11/均匀开B样条/">
+    <link itemprop="mainEntityOfPage" href="http://Tbolp.github.io/2021/02/04/NAT类型与穿透/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -195,7 +193,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          均匀开B样条
+          NAT类型与穿透
         </h1>
 
         <div class="post-meta">
@@ -204,16 +202,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-08-11 19:15:54" itemprop="dateCreated datePublished" datetime="2020-08-11T19:15:54+08:00">2020-08-11</time>
+              <time title="创建时间：2021-02-04 10:53:22 / 修改时间：12:49:26" itemprop="dateCreated datePublished" datetime="2021-02-04T10:53:22+08:00">2021-02-04</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-02 10:14:41" itemprop="dateModified" datetime="2021-01-02T10:14:41+08:00">2021-01-02</time>
-              </span>
 
           
   
@@ -224,8 +216,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2020/08/11/均匀开B样条/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/08/11/均匀开B样条/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/02/04/NAT类型与穿透/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/02/04/NAT类型与穿透/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -240,17 +232,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="均匀开B样条"><a href="#均匀开B样条" class="headerlink" title="均匀开B样条"></a>均匀开B样条</h1><a id="more"></a>
-<h2 id="1-原理"><a href="#1-原理" class="headerlink" title="1 原理"></a>1 原理</h2><p>定义红色函数为$f_{1}$,蓝色函数为$f_{2}$<br><img src="1.svg" alt><br>如果现在我们取$R^{n}$中的两个点$P_{1},P_{2}$,定义$f(x)=f_{1}\cdot P_{1}+ f_{2}\cdot P_{2}$,这样我们就得到了一条曲线，并且由于$f_{1},f_{2}$是连续的所以曲线也是连续的</p>
-<p>如果我们有n个点,那我们就可以选取n个函数，通过计算得到一条曲线$f(x)=\sum f_{i}\cdot P_{i}$,$f(x)$的光滑程度与$f_{i}$有关</p>
-<p>每个点对应一个函数，这一系列函数称为基函数</p>
-<h2 id="2-基函数"><a href="#2-基函数" class="headerlink" title="2 基函数"></a>2 基函数</h2><p>定义<br>$$ f_{n,n+1}(x)=<br>\begin{cases}<br>1 &amp; n \le x &lt; n+1 \\<br>0 &amp; other<br>\end{cases}<br>$$<br>当$k&gt;1$递归定义<br>$$f_{n,n+k} = \frac{x-n}{k-1}f_{n,n+k-1}+\frac{n+k-x}{k-1}f_{n+1,n+k}$$<br>其中$f_{n,n+k}$是$C^{k-2}$的，并且有<br>$$\sum_{i}^{i+k} f_{i,i+k} = 1\quad i+k-1\le x&lt;i+k$$</p>
-<h2 id="3-均匀开B样条"><a href="#3-均匀开B样条" class="headerlink" title="3 均匀开B样条"></a>3 均匀开B样条</h2><p>设有n个点为$P_{1}\dots P_{n}$，需要次数为p的一个开B样条曲线，由以上条件我们选择$f_{1,1+p+1}\dots f_{n,n+p+1}$作为基函数，于是</p>
-<p>$$ f(x)=\sum_{i=1}^{n} f_{i,i+p+1}(x)\cdot P_{i} $$</p>
-<p>因为B样条曲线自变量$x$取值范围需要满足</p>
-<p>$$\sum_{i=1}^{n} f_{i,i+p+1}(x)=1$$</p>
-<p>所以取值范围为$p+1 \le x &lt; n+1$,而为了使曲线存在需满足$p &lt; n$</p>
-<h2 id="4-示例"><a href="#4-示例" class="headerlink" title="4 示例"></a>4 示例</h2><p><a href="https://examples.tbolp.club/#/bspline" target="_blank" rel="noopener">https://examples.tbolp.club/#/bspline</a></p>
+        <h1 id="NAT类型"><a href="#NAT类型" class="headerlink" title="NAT类型"></a>NAT类型</h1><a id="more"></a>
+<p>此处的NAT是指NAPT这种类型,首先简单说明一下NAT的流程</p>
+<h2 id="NAT流程"><a href="#NAT流程" class="headerlink" title="NAT流程"></a>NAT流程</h2><p>A: 局域网内的主机,没有公网地址</p>
+<p>R: 局域网的路由</p>
+<p>B: 有公网地址的主机</p>
+<p>以下为A主动和B建立TCP连接的流程</p>
+<p>A访问B,通过路由表获得下一跳需要发到R</p>
+<p>(A_ip, A_port, B_ip, B_port): A-&gt;R</p>
+<p>R将根据A_ip和A_port一一映射到R的一个端口</p>
+<p>(R_ip, R_port(A_ip, A_port), B_ip, B_port): R-&gt;B</p>
+<p>B返回数据给R</p>
+<p>(B_ip, B_port, R_ip, R_port): B-&gt;R</p>
+<p>R通过返回包的端口发回给A</p>
+<p>(B_ip, B_port, A_ip, A_port): R-&gt;A</p>
+<h2 id="NAT类型-1"><a href="#NAT类型-1" class="headerlink" title="NAT类型"></a>NAT类型</h2><p>通过上面的流程可以知道当A的A_port访问B的B_port时会在R中留下一个映射关系,之后可以通过R_port可以找到内网对应的A_ip和A_port,完成转发.</p>
+<p>NAT的分类均是在A访问B之后R_port存在的情况</p>
+<h3 id="全锥形-Full-Cone"><a href="#全锥形-Full-Cone" class="headerlink" title="全锥形(Full Cone)"></a>全锥形(Full Cone)</h3><p>如果主机C访问R_port,路由依然将数据发给R_port对应的主机,此时NAT为全锥形NAT,可以将R_port看作锥体的顶点,网络拓扑就像一个锥子一样</p>
+<h3 id="限制锥型-Restricted-Cone"><a href="#限制锥型-Restricted-Cone" class="headerlink" title="限制锥型(Restricted Cone)"></a>限制锥型(Restricted Cone)</h3><p>C访问R_port路由不转发数据到对应的主机,但是B主机的B_port2(B_port2与B_port不同)访问R_port时转发,此时为限制锥型NAT.在A主机的A_port在向C主机发过数据后,B,C都可以通过访问R_port到A的相应端口,因为R_port只与A_ip和A_port有关,所以R_port不会变</p>
+<h3 id="端口限制锥型-Port-Restricted-Cone"><a href="#端口限制锥型-Port-Restricted-Cone" class="headerlink" title="端口限制锥型(Port Restricted Cone)"></a>端口限制锥型(Port Restricted Cone)</h3><p>与限制锥型类似,只是B主机的B_port2直接访问R_port也不能转发,只有A主机向B_port2发过数据后才可以通过R_port访问</p>
+<h3 id="对称型-Symmetric"><a href="#对称型-Symmetric" class="headerlink" title="对称型(Symmetric)"></a>对称型(Symmetric)</h3><p>对称型与前面的最大的区别是在于R_port(A_ip, A_port)的映射规则,三种锥型的R_port只与A_ip和A_port有关,而对称型的R_port(A_ip, A_port, B_ip, B_port)与出口地址也有关,其中任何一个变化对应的R_port也会变化</p>
+<h2 id="NAT穿透"><a href="#NAT穿透" class="headerlink" title="NAT穿透"></a>NAT穿透</h2><p>4种NAT总共有$C_4^2+4=10$类型,除了(对称型,对称型)和(对称型,端口限制锥型)以外都可以通过STUN协议进行穿透</p>
 
     </div>
 
@@ -266,13 +268,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/31/Ninja复制文件/" rel="prev" title="Ninja复制文件">
-      <i class="fa fa-chevron-left"></i> Ninja复制文件
+    <a href="/2021/01/02/VPN简介-2/" rel="prev" title="VPN简介-2">
+      <i class="fa fa-chevron-left"></i> VPN简介-2
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/25/调整ubutun在hyperv下分辨率/" rel="next" title="调整ubutun在hyperv下分辨率">
-      调整ubutun在hyperv下分辨率 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -338,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#均匀开B样条"><span class="nav-number">1.</span> <span class="nav-text">均匀开B样条</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-原理"><span class="nav-number">1.1.</span> <span class="nav-text">1 原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-基函数"><span class="nav-number">1.2.</span> <span class="nav-text">2 基函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-均匀开B样条"><span class="nav-number">1.3.</span> <span class="nav-text">3 均匀开B样条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-示例"><span class="nav-number">1.4.</span> <span class="nav-text">4 示例</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT类型"><span class="nav-number">1.</span> <span class="nav-text">NAT类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT流程"><span class="nav-number">1.1.</span> <span class="nav-text">NAT流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT类型-1"><span class="nav-number">1.2.</span> <span class="nav-text">NAT类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全锥形-Full-Cone"><span class="nav-number">1.2.1.</span> <span class="nav-text">全锥形(Full Cone)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#限制锥型-Restricted-Cone"><span class="nav-number">1.2.2.</span> <span class="nav-text">限制锥型(Restricted Cone)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#端口限制锥型-Port-Restricted-Cone"><span class="nav-number">1.2.3.</span> <span class="nav-text">端口限制锥型(Port Restricted Cone)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称型-Symmetric"><span class="nav-number">1.2.4.</span> <span class="nav-text">对称型(Symmetric)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT穿透"><span class="nav-number">1.3.</span> <span class="nav-text">NAT穿透</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -437,59 +436,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
@@ -505,9 +451,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "http://Tbolp.github.io/2020/08/11/均匀开B样条/";
-    this.page.identifier = "2020/08/11/均匀开B样条/";
-    this.page.title = "均匀开B样条";
+    this.page.url = "http://Tbolp.github.io/2021/02/04/NAT类型与穿透/";
+    this.page.identifier = "2021/02/04/NAT类型与穿透/";
+    this.page.title = "NAT类型与穿透";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
