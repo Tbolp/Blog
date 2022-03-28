@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tbolp.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在Chromium里的Blink中添加API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Chromium里的Blink中添加API">
+<meta property="og:url" content="https://tbolp.github.io/2020/12/04/%E5%9C%A8Chromium%E9%87%8C%E7%9A%84Blink%E4%B8%AD%E6%B7%BB%E5%8A%A0API/index.html">
+<meta property="og:site_name" content="Tbolp">
+<meta property="og:description" content="在Chromium里的Blink中添加API">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-04T06:24:18.000Z">
+<meta property="article:modified_time" content="2022-03-11T14:36:57.976Z">
+<meta property="article:author" content="Tbolp">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tbolp.github.io/2020/12/04/%E5%9C%A8Chromium%E9%87%8C%E7%9A%84Blink%E4%B8%AD%E6%B7%BB%E5%8A%A0API/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tbolp.github.io/2020/12/04/%E5%9C%A8Chromium%E9%87%8C%E7%9A%84Blink%E4%B8%AD%E6%B7%BB%E5%8A%A0API/","path":"2020/12/04/在Chromium里的Blink中添加API/","title":"在Chromium里的Blink中添加API"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在Chromium里的Blink中添加API | Tbolp</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tbolp</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8Chromium%E9%87%8C%E7%9A%84Blink%E4%B8%AD%E6%B7%BB%E5%8A%A0API"><span class="nav-number">1.</span> <span class="nav-text">在Chromium里的Blink中添加API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-number">1.2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%9B%AE%E5%BD%95"><span class="nav-number">1.3.1.</span> <span class="nav-text">添加目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99IDL%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.2.</span> <span class="nav-text">编写IDL文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99C-%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.3.</span> <span class="nav-text">编写C++代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E7%BC%96%E8%AF%91%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.4.</span> <span class="nav-text">编写编译文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81"><span class="nav-number">1.4.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.5.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tbolp</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Tbolp" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tbolp.github.io/2020/12/04/%E5%9C%A8Chromium%E9%87%8C%E7%9A%84Blink%E4%B8%AD%E6%B7%BB%E5%8A%A0API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tbolp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tbolp">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="在Chromium里的Blink中添加API | Tbolp">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在Chromium里的Blink中添加API
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-04 14:24:18" itemprop="dateCreated datePublished" datetime="2020-12-04T14:24:18+08:00">2020-12-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-11 22:36:57" itemprop="dateModified" datetime="2022-03-11T22:36:57+08:00">2022-03-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="在Chromium里的Blink中添加API"><a href="#在Chromium里的Blink中添加API" class="headerlink" title="在Chromium里的Blink中添加API"></a>在Chromium里的Blink中添加API</h1><span id="more"></span>
+<p>我的目标导出js的接口使得可以在页面通过js调用C++的一些方法完成任务</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>关于导出C++接口方法</p>
+<p>1 在extension api导出接口方便extension调用</p>
+<p>2 在Blink内核中导出接口</p>
+<p>我使用方法2完成导出,阅读一下内容可能需要了解Web IDL,Blink GC,Chromium Task等方面的知识,相关的一些资料在最后给出</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>chroumium版本 70.0.3538.513</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>在C++中定义Example类,该类会执行一个耗时操作,完成后调用回调将结果返回</p>
+<p>在js里需要构造Example类,添加一个回调函数,然后调用将结果输出</p>
+<h3 id="添加目录"><a href="#添加目录" class="headerlink" title="添加目录"></a>添加目录</h3><p>在third_party&#x2F;blink&#x2F;renderer&#x2F;modules添加example目录,idl及对应的C++的实现统一放在这个目录</p>
+<h3 id="编写IDL文件"><a href="#编写IDL文件" class="headerlink" title="编写IDL文件"></a>编写IDL文件</h3><p>1 WebIDL是一种接口描述规范,可以用来生成一些C++和js之间的转换代码</p>
+<p>2 inishedCallback为回调限制的类型,编译时会自动生成一个C++对象V8FinishedCallback与之对应</p>
+<p>3 [Constructor]表明该interface可以再js中使用new构造,该属性可以有参数,对应的C++方法为static Example* Create(),Example实例被blink GC管理不需要对应的delete</p>
+<p>4 Example需要编写blink::Example与之对应</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">callback FinishedCallback = void(DOMString msg);</span><br><span class="line"></span><br><span class="line">[Constructor]</span><br><span class="line">interface Example &#123;</span><br><span class="line">  boolean Start();</span><br><span class="line">  DOMString Name();</span><br><span class="line">  void OnFinish(FinishedCallback callback);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="编写C-代码"><a href="#编写C-代码" class="headerlink" title="编写C++代码"></a>编写C++代码</h3><p>1 继承ScriptWrappable类可以提供类型描述,并且该类继承GarbageCollectedFinalized,所以Example是一个blink GC对象.类Example声明的方法与idl是对应的,除了构造函数比较特别以外.</p>
+<p>2 #include “third_party&#x2F;blink&#x2F;renderer&#x2F;bindings&#x2F;modules&#x2F;v8&#x2F;v8_finished_callback.h”这个文件是根据idl里面callback自动生成的文件,编译后才会有.</p>
+<p>3 不要再别的线程里调用js注册的回调函数</p>
+<p>以上说明在代码注释里面也有对应</p>
+<p>example.h</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#ifndef __EXAMPLE_H__</span><br><span class="line">#define __EXAMPLE_H__</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &quot;base/task/post_task.h&quot;</span><br><span class="line">#include &quot;third_party/blink/renderer/bindings/modules/v8/v8_finished_callback.h&quot;</span><br><span class="line">#include &quot;third_party/blink/renderer/platform/bindings/script_wrappable.h&quot;</span><br><span class="line">#include &quot;third_party/blink/renderer/platform/wtf/text/wtf_string.h&quot;</span><br><span class="line"></span><br><span class="line">// 类Example需要放在blink空间里</span><br><span class="line">namespace blink &#123;</span><br><span class="line"></span><br><span class="line">// 类需要继承ScriptWrappable提供类型信息</span><br><span class="line">// ScriptWrappable是一个blink GC管理的类不可以直接delete</span><br><span class="line">class Example final : public ScriptWrappable &#123;</span><br><span class="line">  DEFINE_WRAPPERTYPEINFO();</span><br><span class="line"></span><br><span class="line"> public:</span><br><span class="line">  // js调用new时调用该函数,相当于对外导出的构造函数</span><br><span class="line">  static Example* Create() &#123; return new Example; &#125;</span><br><span class="line">  bool Start() &#123;</span><br><span class="line">    return base::PostTaskAndReply(</span><br><span class="line">        FROM_HERE, base::BindOnce(&amp;Example::startWork, base::Unretained(this)),</span><br><span class="line">        base::BindOnce(&amp;Example::finished, base::Unretained(this)));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // String与idl文件中DOMString对应</span><br><span class="line">  String Name() &#123; return String(&quot;Example&quot;); &#125;</span><br><span class="line"></span><br><span class="line">  void startWork() &#123; std::this_thread::sleep_for(std::chrono::seconds(10)); &#125;</span><br><span class="line"></span><br><span class="line">  void finished() &#123;</span><br><span class="line">    if (this-&gt;callback_) &#123;</span><br><span class="line">      // 调用js中的回调</span><br><span class="line">      this-&gt;callback_-&gt;InvokeAndReportException(nullptr,</span><br><span class="line">                                                String(&quot;task finished&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  void OnFinish(V8FinishedCallback* callback) &#123; callback_ = callback; &#125;</span><br><span class="line"></span><br><span class="line">  // 因为该类包含需要追踪的类Member&lt;V8FinishedCallback&gt;,该方法必须实现</span><br><span class="line">  void Trace(Visitor* visitor) override &#123;</span><br><span class="line">    visitor-&gt;Trace(callback_);</span><br><span class="line">    ScriptWrappable::Trace(visitor);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ~Example() override = default;</span><br><span class="line"></span><br><span class="line"> private:</span><br><span class="line">  // 保存js注册的回调</span><br><span class="line">  Member&lt;V8FinishedCallback&gt; callback_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#125;  // namespace blink</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>example.cc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;example.h&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="编写编译文件"><a href="#编写编译文件" class="headerlink" title="编写编译文件"></a>编写编译文件</h3><p>修改的地方比较杂,但是不难理解</p>
+<p>1 在third_party&#x2F;blink&#x2F;renderer&#x2F;modules&#x2F;example里添加以下文件来说明example模块编译的规则</p>
+<p>BUILD.gn</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import(&quot;//third_party/blink/renderer/modules/modules.gni&quot;)</span><br><span class="line"></span><br><span class="line">blink_modules_sources(&quot;example&quot;) &#123;</span><br><span class="line">  sources = [</span><br><span class="line">    &quot;example.cc&quot;,</span><br><span class="line">    &quot;example.h&quot;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2 在third_party\blink\renderer\modules\BUILD.gn文件的deps变量里添加以下内容确保example模块被编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;//third_party/blink/renderer/modules/example&quot;,</span><br></pre></td></tr></table></figure>
+
+<p>3 在third_party\blink\renderer\modules\modules_idl_files.gni文件的modules_idl_files里的get_path_info传入参数中添加以下内容确保idl文件被编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;example/example.idl&quot;,</span><br></pre></td></tr></table></figure>
+
+<p>4 在third_party\blink\renderer\bindings\modules\v8\generated.gni文件的generated_modules_callback_function_files变量里添加以下内容确保idl生成的C++文件被编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;$bindings_modules_v8_output_dir/v8_finished_callback.cc&quot;,</span><br><span class="line">&quot;$bindings_modules_v8_output_dir/v8_finished_callback.h&quot;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>chromium编译成功后在console输入以下语句成功后会在10秒后弹出消息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">example = new Example()</span><br><span class="line">example.OnFinish((msg)=&gt;&#123;alert(msg)&#125;)</span><br><span class="line">example.Start()</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://heycam.github.io/webidl/#idl-types">https://heycam.github.io/webidl/#idl-types</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.chromium.org/developers/web-idl-interfaces">https://www.chromium.org/developers/web-idl-interfaces</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.chromium.org/blink/webidl#TOC-Style">https://www.chromium.org/blink/webidl#TOC-Style</a></p>
+<p><a target="_blank" rel="noopener" href="https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/heap/BlinkGCAPIReference.md#GarbageCollected">https://chromium.googlesource.com/chromium/src/+/master/third_party/blink/renderer/platform/heap/BlinkGCAPIReference.md#GarbageCollected</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/25/Android%E7%BC%96%E8%AF%91lua-5-4-1/" rel="prev" title="Android编译lua-5.4.1">
+                  <i class="fa fa-chevron-left"></i> Android编译lua-5.4.1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/06/Chromium%E6%B7%BB%E5%8A%A0Extension-api/" rel="next" title="Chromium添加Extension api">
+                  Chromium添加Extension api <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tbolp</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js","integrity":"sha256-7wT34TI0pEBeEFoi4z+vhuSddGh6vUTMWdqJ2SDe2jg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha256-94CNZ/bJtwrBYZrXhCOBvpB4rZUzBnvAsirFv31TMGo=" crossorigin="anonymous">
+
+
+
+</body>
+</html>
