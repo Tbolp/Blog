@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tbolp.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="LibTooling简介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LibTooling简介">
+<meta property="og:url" content="https://tbolp.github.io/2019/12/14/LibTooling%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="Tbolp">
+<meta property="og:description" content="LibTooling简介">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-13T17:46:34.000Z">
+<meta property="article:modified_time" content="2020-08-11T09:38:43.001Z">
+<meta property="article:author" content="Tbolp">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tbolp.github.io/2019/12/14/LibTooling%E7%AE%80%E4%BB%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tbolp.github.io/2019/12/14/LibTooling%E7%AE%80%E4%BB%8B/","path":"2019/12/14/LibTooling简介/","title":"LibTooling简介"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LibTooling简介 | Tbolp</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tbolp</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#libtooling%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text"> LibTooling简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text"> 参数解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clangtool"><span class="nav-number">1.2.</span> <span class="nav-text"> ClangTool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frontendaction%E4%B8%8Eastconsumer"><span class="nav-number">1.3.</span> <span class="nav-text"> FrontendAction与ASTConsumer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recursiveastvisitor"><span class="nav-number">1.4.</span> <span class="nav-text"> RecursiveASTVisitor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sourcemanager"><span class="nav-number">1.5.</span> <span class="nav-text"> SourceManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8Cfrontendaction"><span class="nav-number">1.6.</span> <span class="nav-text"> 运行FrontendAction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matchfinder"><span class="nav-number">1.7.</span> <span class="nav-text"> MatchFinder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">1.8.</span> <span class="nav-text"> 附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bast%E6%A0%91"><span class="nav-number">1.8.1.</span> <span class="nav-text"> 查看AST树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#astmatcher%E5%92%8Cast%E7%BB%93%E7%82%B9%E6%96%87%E6%A1%A3"><span class="nav-number">1.8.2.</span> <span class="nav-text"> ASTMatcher和AST结点文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5"><span class="nav-number">1.8.3.</span> <span class="nav-text"> 引入</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tbolp</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Tbolp" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tbolp.github.io/2019/12/14/LibTooling%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tbolp">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tbolp">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="LibTooling简介 | Tbolp">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LibTooling简介
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-12-14 01:46:34" itemprop="dateCreated datePublished" datetime="2019-12-14T01:46:34+08:00">2019-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2020-08-11 17:38:43" itemprop="dateModified" datetime="2020-08-11T17:38:43+08:00">2020-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="libtooling简介"><a class="markdownIt-Anchor" href="#libtooling简介"></a> LibTooling简介</h1>
+<span id="more"></span>
+<p>环境clang版本为8.0.0，Visual Studio 2019</p>
+<h2 id="参数解析"><a class="markdownIt-Anchor" href="#参数解析"></a> 参数解析</h2>
+<p>使用clang解析C++文件需要传入编译参数，llvm提供类CommonOptionsParser，可以添加自定义解析规则</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CommonOptionsParser <span class="title">parser</span><span class="params">(argc, argv, GeneralCategory)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="clangtool"><a class="markdownIt-Anchor" href="#clangtool"></a> ClangTool</h2>
+<p>ClangTool获得解析后的参数即可分析文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClangTool tool(parser.getCompilations(), parser.getSourcePathList());</span><br></pre></td></tr></table></figure>
+<h2 id="frontendaction与astconsumer"><a class="markdownIt-Anchor" href="#frontendaction与astconsumer"></a> FrontendAction与ASTConsumer</h2>
+<p>FrontendAction创建一个ASTConsumer，编译过程触发的事件通过重写ASTConsumer的虚函数可以进行处理，其中HandleTranslationUnit在每一个单元编译完成后调用，HandleTranslationUnit函数参数为ASTContext（可以看作AST树），RecursiveASTVisitor可以遍历ASTContext，完成AST树的遍历</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ExampleVisitor</span> : <span class="keyword">public</span> RecursiveASTVisitor&lt;ExampleVisitor&gt;</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">ExampleVisitor</span>(SourceManager&amp; pSM) :</span><br><span class="line">        _source_manager(pSM) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">VisitCXXRecordDecl</span><span class="params">(CXXRecordDecl* pDecl)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (_source_manager.<span class="built_in">isInMainFile</span>(pDecl-&gt;<span class="built_in">getLocation</span>())) &#123;</span><br><span class="line">            _class_name.<span class="built_in">emplace_back</span>(pDecl-&gt;<span class="built_in">getName</span>());</span><br><span class="line">            <span class="keyword">if</span> (pDecl-&gt;<span class="built_in">isTemplateDecl</span>())</span><br><span class="line">                std::cout &lt;&lt; <span class="string">&quot;template &quot;</span>;</span><br><span class="line">            std::cout &lt;&lt; pDecl-&gt;<span class="built_in">getNameAsString</span>() &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">VisitCXXMethodDecl</span><span class="params">(CXXMethodDecl* pDecl)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (_source_manager.<span class="built_in">isInMainFile</span>(pDecl-&gt;<span class="built_in">getLocation</span>()))</span><br><span class="line">            std::cout &lt;&lt; pDecl-&gt;<span class="built_in">getNameAsString</span>() &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">TraverseNamespaceDecl</span><span class="params">(NamespaceDecl* pDecl)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (_source_manager.<span class="built_in">isInMainFile</span>(pDecl-&gt;<span class="built_in">getLocation</span>())) &#123;</span><br><span class="line">            std::cout &lt;&lt; pDecl-&gt;<span class="built_in">getNameAsString</span>() &lt;&lt; <span class="string">&quot; Start&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">            RecursiveASTVisitor::<span class="built_in">TraverseNamespaceDecl</span>(pDecl);</span><br><span class="line">            std::cout &lt;&lt; pDecl-&gt;<span class="built_in">getNameAsString</span>() &lt;&lt; <span class="string">&quot; End&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::vector&lt;std::string&gt; _class_name;</span><br><span class="line">    SourceManager&amp; _source_manager;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ExampleConsumer</span> : <span class="keyword">public</span> ASTConsumer</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">ExampleConsumer</span>(SourceManager&amp; pSM) :</span><br><span class="line">        _visitor(pSM) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">HandleTranslationUnit</span><span class="params">(ASTContext&amp; pContext)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        _visitor.<span class="built_in">TraverseDecl</span>(pContext.<span class="built_in">getTranslationUnitDecl</span>());</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    ExampleVisitor _visitor;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ExampleAction</span> : <span class="keyword">public</span> ASTFrontendAction</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::unique_ptr&lt;ASTConsumer&gt; <span class="title">CreateASTConsumer</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">        CompilerInstance&amp; pCompiler, StringRef pFile)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">unique_ptr</span>&lt;ASTConsumer&gt;(<span class="keyword">new</span> <span class="built_in">ExampleConsumer</span>(pCompiler.<span class="built_in">getSourceManager</span>()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="recursiveastvisitor"><a class="markdownIt-Anchor" href="#recursiveastvisitor"></a> RecursiveASTVisitor</h2>
+<p>VisitCXXMethodDecl在遍历到类的成员方法时调用，Visit后可以跟节点名称</p>
+<p>TraverseNamespaceDecl遍历该节点时调用，Traverse后可以跟节点名称，可以跳过某些类型节点</p>
+<h2 id="sourcemanager"><a class="markdownIt-Anchor" href="#sourcemanager"></a> SourceManager</h2>
+<p>可以找到节点对应源文件的位置</p>
+<h2 id="运行frontendaction"><a class="markdownIt-Anchor" href="#运行frontendaction"></a> 运行FrontendAction</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tool.run(newFrontendActionFactory&lt;ExampleAction&gt;().get());</span><br></pre></td></tr></table></figure>
+<h2 id="matchfinder"><a class="markdownIt-Anchor" href="#matchfinder"></a> MatchFinder</h2>
+<p>当只需要查询某些节点，可以使用clang提供的MatchFinder类，则不需要自己去创建ASTConsumer</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Printer</span> : <span class="keyword">public</span> MatchFinder::MatchCallback</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">const</span> MatchFinder::MatchResult&amp; pRes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> node = pRes.Nodes.<span class="built_in">getNodeAs</span>&lt;CXXRecordDecl&gt;(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (node &amp;&amp;</span><br><span class="line">            pRes.SourceManager-&gt;<span class="built_in">isInMainFile</span>(node-&gt;<span class="built_in">getLocation</span>()) &amp;&amp;</span><br><span class="line">            !node-&gt;<span class="built_in">isImplicit</span>()) &#123;</span><br><span class="line">            std::cout &lt;&lt; node-&gt;<span class="built_in">getName</span>().<span class="built_in">str</span>() &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MatchFinder finder;</span><br><span class="line">Printer printer;</span><br><span class="line">finder.<span class="built_in">addMatcher</span>(<span class="built_in">cxxRecordDecl</span>().<span class="built_in">bind</span>(<span class="string">&quot;&quot;</span>), &amp;printer);</span><br><span class="line">tool.<span class="built_in">run</span>(<span class="built_in">newFrontendActionFactory</span>(&amp;finder).<span class="built_in">get</span>());</span><br></pre></td></tr></table></figure>
+<h2 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h2>
+<h3 id="查看ast树"><a class="markdownIt-Anchor" href="#查看ast树"></a> 查看AST树</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang++ -Xclang -ast-dump main.cpp</span><br></pre></td></tr></table></figure>
+<h3 id="astmatcher和ast结点文档"><a class="markdownIt-Anchor" href="#astmatcher和ast结点文档"></a> ASTMatcher和AST结点文档</h3>
+<p><a target="_blank" rel="noopener" href="https://clang.llvm.org/docs/LibASTMatchersReference.html">https://clang.llvm.org/docs/LibASTMatchersReference.html</a></p>
+<h3 id="引入"><a class="markdownIt-Anchor" href="#引入"></a> 引入</h3>
+<p>头文件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;clang/Tooling/CommonOptionsParser.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;clang/Tooling/Tooling.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;clang/ASTMatchers/ASTMatchers.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;clang/ASTMatchers/ASTMatchFinder.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;clang/AST/RecursiveASTVisitor.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;clang/Frontend/CompilerInstance.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> clang::tooling;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> clang;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> clang::ast_matchers;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> llvm;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> llvm::cl;</span><br></pre></td></tr></table></figure>
+<p>库文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">clangAST.lib</span><br><span class="line">clangBasic.lib</span><br><span class="line">clangFrontend.lib</span><br><span class="line">clangIndex.lib</span><br><span class="line">clangLex.lib</span><br><span class="line">clangSema.lib</span><br><span class="line">clangSerialization.lib</span><br><span class="line">clangTooling.lib</span><br><span class="line">clangARCMigrate.lib</span><br><span class="line">LLVMAArch64CodeGen.lib</span><br><span class="line">LLVMAArch64AsmParser.lib</span><br><span class="line">LLVMAArch64AsmPrinter.lib</span><br><span class="line">LLVMAArch64Desc.lib</span><br><span class="line">LLVMAArch64Disassembler.lib</span><br><span class="line">LLVMAArch64Info.lib</span><br><span class="line">LLVMAArch64Utils.lib</span><br><span class="line">LLVMAMDGPUCodeGen.lib</span><br><span class="line">LLVMAMDGPUAsmParser.lib</span><br><span class="line">LLVMAMDGPUAsmPrinter.lib</span><br><span class="line">LLVMAMDGPUDesc.lib</span><br><span class="line">LLVMAMDGPUDisassembler.lib</span><br><span class="line">LLVMAMDGPUInfo.lib</span><br><span class="line">LLVMAMDGPUUtils.lib</span><br><span class="line">LLVMARMCodeGen.lib</span><br><span class="line">LLVMARMAsmParser.lib</span><br><span class="line">LLVMARMAsmPrinter.lib</span><br><span class="line">LLVMARMDesc.lib</span><br><span class="line">LLVMARMDisassembler.lib</span><br><span class="line">LLVMARMInfo.lib</span><br><span class="line">LLVMARMUtils.lib</span><br><span class="line">LLVMBPFCodeGen.lib</span><br><span class="line">LLVMBPFAsmParser.lib</span><br><span class="line">LLVMBPFAsmPrinter.lib</span><br><span class="line">LLVMBPFDesc.lib</span><br><span class="line">LLVMBPFDisassembler.lib</span><br><span class="line">LLVMBPFInfo.lib</span><br><span class="line">LLVMHexagonCodeGen.lib</span><br><span class="line">LLVMHexagonAsmParser.lib</span><br><span class="line">LLVMHexagonDesc.lib</span><br><span class="line">LLVMHexagonDisassembler.lib</span><br><span class="line">LLVMHexagonInfo.lib</span><br><span class="line">LLVMLanaiCodeGen.lib</span><br><span class="line">LLVMLanaiAsmParser.lib</span><br><span class="line">LLVMLanaiAsmPrinter.lib</span><br><span class="line">LLVMLanaiDesc.lib</span><br><span class="line">LLVMLanaiDisassembler.lib</span><br><span class="line">LLVMLanaiInfo.lib</span><br><span class="line">LLVMMipsCodeGen.lib</span><br><span class="line">LLVMMipsAsmParser.lib</span><br><span class="line">LLVMMipsAsmPrinter.lib</span><br><span class="line">LLVMMipsDesc.lib</span><br><span class="line">LLVMMipsDisassembler.lib</span><br><span class="line">LLVMMipsInfo.lib</span><br><span class="line">LLVMMSP430CodeGen.lib</span><br><span class="line">LLVMMSP430AsmParser.lib</span><br><span class="line">LLVMMSP430AsmPrinter.lib</span><br><span class="line">LLVMMSP430Desc.lib</span><br><span class="line">LLVMMSP430Disassembler.lib</span><br><span class="line">LLVMMSP430Info.lib</span><br><span class="line">LLVMNVPTXCodeGen.lib</span><br><span class="line">LLVMNVPTXAsmPrinter.lib</span><br><span class="line">LLVMNVPTXDesc.lib</span><br><span class="line">LLVMNVPTXInfo.lib</span><br><span class="line">LLVMPowerPCCodeGen.lib</span><br><span class="line">LLVMPowerPCAsmParser.lib</span><br><span class="line">LLVMPowerPCAsmPrinter.lib</span><br><span class="line">LLVMPowerPCDesc.lib</span><br><span class="line">LLVMPowerPCDisassembler.lib</span><br><span class="line">LLVMPowerPCInfo.lib</span><br><span class="line">LLVMSparcCodeGen.lib</span><br><span class="line">LLVMSparcAsmParser.lib</span><br><span class="line">LLVMSparcAsmPrinter.lib</span><br><span class="line">LLVMSparcDesc.lib</span><br><span class="line">LLVMSparcDisassembler.lib</span><br><span class="line">LLVMSparcInfo.lib</span><br><span class="line">LLVMSystemZCodeGen.lib</span><br><span class="line">LLVMSystemZAsmParser.lib</span><br><span class="line">LLVMSystemZAsmPrinter.lib</span><br><span class="line">LLVMSystemZDesc.lib</span><br><span class="line">LLVMSystemZDisassembler.lib</span><br><span class="line">LLVMSystemZInfo.lib</span><br><span class="line">LLVMWebAssemblyCodeGen.lib</span><br><span class="line">LLVMWebAssemblyAsmParser.lib</span><br><span class="line">LLVMWebAssemblyAsmPrinter.lib</span><br><span class="line">LLVMWebAssemblyDesc.lib</span><br><span class="line">LLVMWebAssemblyDisassembler.lib</span><br><span class="line">LLVMWebAssemblyInfo.lib</span><br><span class="line">LLVMX86CodeGen.lib</span><br><span class="line">LLVMX86AsmParser.lib</span><br><span class="line">LLVMX86AsmPrinter.lib</span><br><span class="line">LLVMX86Desc.lib</span><br><span class="line">LLVMX86Disassembler.lib</span><br><span class="line">LLVMX86Info.lib</span><br><span class="line">LLVMX86Utils.lib</span><br><span class="line">LLVMXCoreCodeGen.lib</span><br><span class="line">LLVMXCoreAsmPrinter.lib</span><br><span class="line">LLVMXCoreDesc.lib</span><br><span class="line">LLVMXCoreDisassembler.lib</span><br><span class="line">LLVMXCoreInfo.lib</span><br><span class="line">LLVMCore.lib</span><br><span class="line">LLVMSupport.lib</span><br><span class="line">clangStaticAnalyzerCheckers.lib</span><br><span class="line">clangStaticAnalyzerCore.lib</span><br><span class="line">clangCrossTU.lib</span><br><span class="line">clangDriver.lib</span><br><span class="line">version.lib</span><br><span class="line">clangParse.lib</span><br><span class="line">LLVMOption.lib</span><br><span class="line">clangEdit.lib</span><br><span class="line">clangAnalysis.lib</span><br><span class="line">clangASTMatchers.lib</span><br><span class="line">clangFormat.lib</span><br><span class="line">clangToolingInclusions.lib</span><br><span class="line">clangToolingCore.lib</span><br><span class="line">clangRewrite.lib</span><br><span class="line">LLVMipo.lib</span><br><span class="line">LLVMVectorize.lib</span><br><span class="line">LLVMIRReader.lib</span><br><span class="line">LLVMAsmParser.lib</span><br><span class="line">LLVMInstrumentation.lib</span><br><span class="line">LLVMLinker.lib</span><br><span class="line">LLVMGlobalISel.lib</span><br><span class="line">LLVMAsmPrinter.lib</span><br><span class="line">LLVMSelectionDAG.lib</span><br><span class="line">LLVMCodeGen.lib</span><br><span class="line">LLVMScalarOpts.lib</span><br><span class="line">LLVMAggressiveInstCombine.lib</span><br><span class="line">LLVMInstCombine.lib</span><br><span class="line">LLVMBitWriter.lib</span><br><span class="line">LLVMTarget.lib</span><br><span class="line">LLVMTransformUtils.lib</span><br><span class="line">LLVMAnalysis.lib</span><br><span class="line">LLVMProfileData.lib</span><br><span class="line">LLVMObject.lib</span><br><span class="line">LLVMBitReader.lib</span><br><span class="line">LLVMMCParser.lib</span><br><span class="line">LLVMMCDisassembler.lib</span><br><span class="line">LLVMMC.lib</span><br><span class="line">LLVMBinaryFormat.lib</span><br><span class="line">LLVMDebugInfoCodeView.lib</span><br><span class="line">LLVMDebugInfoMSF.lib</span><br><span class="line">psapi.lib</span><br><span class="line">uuid.lib</span><br><span class="line">advapi32.lib</span><br><span class="line">delayimp.lib</span><br><span class="line">LLVMDemangle.lib</span><br><span class="line">kernel32.lib</span><br><span class="line">user32.lib</span><br><span class="line">gdi32.lib</span><br><span class="line">winspool.lib</span><br><span class="line">oleaut32.lib</span><br><span class="line">comdlg32.lib</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/12/14/Git%20Stash/" rel="prev" title="Git Stash">
+                  <i class="fa fa-chevron-left"></i> Git Stash
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/12/%E6%A0%91%E8%8E%93%E6%B4%BEfreeradius%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="树莓派freeradius服务器">
+                  树莓派freeradius服务器 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tbolp</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js","integrity":"sha256-7wT34TI0pEBeEFoi4z+vhuSddGh6vUTMWdqJ2SDe2jg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha256-94CNZ/bJtwrBYZrXhCOBvpB4rZUzBnvAsirFv31TMGo=" crossorigin="anonymous">
+
+
+
+</body>
+</html>
